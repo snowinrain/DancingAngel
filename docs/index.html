@@ -66,8 +66,14 @@
 
     window.fbAsyncInit = function() {
       FB.init({
+        appId      : '2141490332844323',
         xfbml            : true,
         version          : 'v7.0'
+      });
+
+      FB.getLoginStatus(function(response) {
+          console.log("getLoginStatus:", response);
+          statusChangeCallback(response);
       });
 
       var finished_rendering = function(response) {
