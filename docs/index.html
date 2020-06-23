@@ -73,7 +73,6 @@
 
       FB.getLoginStatus(function(response) {
           console.log("getLoginStatus:", response);
-          statusChangeCallback(response);
       });
 
       var finished_rendering = function(response) {
@@ -104,6 +103,12 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
+    function checkLoginState() {
+      FB.getLoginStatus(function(response) {
+        console.log("checkLoginState", response);
+      });
+    }
+
 </script>
 
   <!-- Your Chat Plugin code -->
@@ -113,6 +118,12 @@
   logged_out_greeting="Hi! If you're facing any problem, please text me here"
     page_id="134204263927963">
   </div>
+
+
+<fb:login-button 
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
 
    <button onclick="myFunction()">Click me</button>
 
